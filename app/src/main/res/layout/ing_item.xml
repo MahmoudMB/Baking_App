@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="6dp"
+    app:cardElevation="6dp"
+    >
+
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="60dp"
+    android:padding="10dp"
+    >
+
+
+    <TextView
+        android:id="@+id/Ingredient_Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="Heavy Cream"
+        android:layout_centerVertical="true"
+        >
+    </TextView>
+
+
+    <TextView
+        android:id="@+id/Ingredient_Quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="1"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+
+>
+</TextView>
+
+
+
+<TextView
+android:id="@+id/Ingredient_size"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:textSize="20sp"
+android:text="CUP"
+android:layout_marginRight="30dp"
+android:layout_toLeftOf="@id/Ingredient_Quantity"
+android:layout_alignParentRight="true"
+    android:layout_centerVertical="true"
+    >
+</TextView>
+
+
+
+
+    </RelativeLayout>
+
+
+
+    </android.support.v7.widget.CardView>

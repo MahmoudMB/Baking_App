@@ -1,0 +1,56 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:layout_margin="10dp"
+
+android:id="@+id/WidgetRelativeLayout"
+    >
+
+
+    <TextView
+        android:id="@+id/Ingredient_Name_Widget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="Heavy Cream"
+
+android:layout_centerVertical="true"
+        >
+    </TextView>
+
+
+    <TextView
+        android:id="@+id/Ingredient_Quantity_Widget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="1"
+        android:layout_toRightOf="@id/Ingredient_size_Widget"
+        android:layout_centerVertical="true"
+
+        >
+    </TextView>
+
+
+
+    <TextView
+        android:id="@+id/Ingredient_size_Widget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="CUP"
+        android:layout_marginRight="50dp"
+        android:layout_toRightOf="@id/Ingredient_Name_Widget"
+
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dp"
+        >
+    </TextView>
+
+
+
+
+</RelativeLayout>
+
