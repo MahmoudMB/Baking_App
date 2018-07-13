@@ -107,9 +107,28 @@ else{
         mRecyclerViewSteps.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecyclerViewSteps.setAdapter(adapter);
 
-if(type!=3)
-        IngredientService.StartIngredientService(getContext(),recipe);
+
+
+
+
+
+rootView.findViewById(R.id.addToWidg).setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+
+        if(type!=3)
+            IngredientService.StartIngredientService(getContext(),recipe);
+
+    }
+});
+
+
         return rootView;
+
+
+
+
+
     }
 
 

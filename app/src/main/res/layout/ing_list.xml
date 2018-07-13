@@ -5,6 +5,15 @@
     android:layout_height="match_parent">
 
 
+
+    <Button android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/addToWidg"
+        android:text="Add To Widget"
+        >
+    </Button>
+
+
     <android.support.v7.widget.RecyclerView
 
         android:id="@+id/IngssRecycler"

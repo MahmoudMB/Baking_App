@@ -1,6 +1,8 @@
 package com.example.android.bakingapp.Widget;
 
 import android.app.IntentService;
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.Nullable;
@@ -8,6 +10,7 @@ import android.util.Log;
 
 import com.example.android.bakingapp.Model.Ingredient;
 import com.example.android.bakingapp.Model.Recipe;
+import com.example.android.bakingapp.R;
 
 import java.util.ArrayList;
 
@@ -92,10 +95,15 @@ public class IngredientService extends IntentService {
         Intent intent = new Intent(Widget_Action);
         intent.setAction(Widget_Action);
         intent.putExtra(Extra_Ing, Ing);
-
-
         intent.putExtra(Extra_Measure, Measure);
         intent.putExtra(Extra_Quantity, Quantity);
+
+
+        AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(this);
+        int[] appWidgetIds = appWidgetManager.getAppWidgetIds(new ComponentName(this, IngredientWidget.class));
+        appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetIds, R.id.ListViewIng);
+        //Now update all widgets
+        IngredientWidget.UpdateWidgets(this, appWidgetManager,appWidgetIds);
         sendBroadcast(intent);
 
     }

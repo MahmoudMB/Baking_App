@@ -60,8 +60,6 @@ public class stepsFragment extends Fragment implements ExoPlayer.EventListener  
     private int currentWindow=0;
     private BandwidthMeter bandwidthMeter;
 
-    private static final String TAG = "Activity";
-
 
     View rootView;
 
@@ -172,8 +170,8 @@ if (!step.getVideoURL().isEmpty())
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
 
-        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE )
-            hideSystemUi();
+      //  if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE )
+        //    hideSystemUi();
 
 
     }
