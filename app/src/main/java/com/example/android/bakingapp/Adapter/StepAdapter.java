@@ -94,11 +94,11 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.MyViewHolder> 
     public class MyViewHolder extends RecyclerView.ViewHolder{
 
         TextView MasterItemsss;
-ImageView ThumbNailForVideo;
+
         public MyViewHolder(View itemView) {
             super(itemView);
             MasterItemsss = (TextView)itemView.findViewById(R.id.MasterItemsss);
-            ThumbNailForVideo = (ImageView)itemView.findViewById(R.id.ThumbNailForVideo);
+
         }
     }
 
