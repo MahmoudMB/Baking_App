@@ -89,7 +89,7 @@ if (currentRecipe.getImage()!=null)
 {
     Glide.with(mContext)
             .load(currentRecipe.getImage())
-            .thumbnail(Glide.with(mContext).load(currentRecipe.getSteps().get(currentRecipe.getSteps().size() - 1).getVideoURL()))
+            .thumbnail(Glide.with(mContext).load(currentRecipe.getImage()))
             .into(holder.Recipe_Image);
 }
 
