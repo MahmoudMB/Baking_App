@@ -1,9 +1,11 @@
 package com.example.android.bakingapp;
 
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 
 import com.example.android.bakingapp.Model.Ingredient;
 import com.example.android.bakingapp.Model.Recipe;
@@ -13,12 +15,16 @@ import java.util.ArrayList;
 
 public class IngredientActivity extends AppCompatActivity {
 
-
+    private boolean videoFragment=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ingredient);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
 
         Recipe recipe;
         Step step;
@@ -44,13 +50,22 @@ if (type==1)
 
 if (type==2)
 {
+   if (savedInstanceState != null) {
+       videoFragment = savedInstanceState.getBoolean("VideoRotation");
+   }
+Log.v("VideoFragment","ffff");
+    if(!videoFragment)
+    {
+        Log.v("VideoFragment","iff");
+        videoFragment = true;
     step = (Step)getIntent().getSerializableExtra("Step");
-    stepsFragment f = new stepsFragment();
+    StepssFragment f = new StepssFragment();
     FragmentManager fragmentManager = getSupportFragmentManager();
 
     fragmentManager.beginTransaction()
-            .add(R.id.fragmentcontainer1, f)
+            .replace(R.id.fragmentcontainer1, f)
             .commit();
+    }
 
 }
 
@@ -68,4 +83,22 @@ if (type==2)
 
         }
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        super.onOptionsItemSelected(item);
+        //Back Button to navigate back to the details screen
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
+            finish();
+        }
+        return true;
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+       outState.putBoolean("VideoRotation", videoFragment);
+    }
+
 }

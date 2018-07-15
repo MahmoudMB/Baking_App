@@ -13,24 +13,34 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
-        <activity android:name=".RecipeDetail"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
-            />
         <activity
-            android:name=".IngredientActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
-            android:launchMode="singleTop"></activity>
+            android:name=".RecipeDetail"
+            android:parentActivityName=".MainActivity">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.example.android.bakingapp.MainActivity" />
+    </activity>
+        <activity android:name=".IngredientActivity"
+            android:parentActivityName=".RecipeDetail" >
+
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.example.android.bakingapp.RecipeDetail" />
+        </activity>
+
 
         <receiver android:name=".Widget.IngredientWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-                <action android:name="WidgetAction"></action>
+                <action android:name="WidgetAction" />
             </intent-filter>
 
             <meta-data
@@ -38,16 +48,10 @@
                 android:resource="@xml/ingredient_widget_info" />
         </receiver>
 
-
         <service
             android:name=".Widget.ListWidgetService"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
-
-        <service
-            android:name=".Widget.IngredientService"
-            />
-
-
+        <service android:name=".Widget.IngredientService" />
 
 
     </application>

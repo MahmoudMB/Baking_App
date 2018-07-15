@@ -1,12 +1,18 @@
 package com.example.android.bakingapp;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.os.Environment;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.example.android.bakingapp.Model.Ingredient;
 import com.example.android.bakingapp.Model.Recipe;
 import com.example.android.bakingapp.Model.Step;
@@ -15,6 +21,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 
 /**
@@ -99,13 +108,24 @@ public class Utils {
 
                             Step step1 = new Step(id1,shortDescription,description,videoURL,thumbnailURL);
                             steps.add(step1);
-
-
                         }
 
                         int servings = Recipe.getInt("servings");
+
+
+
+
+
+
+
                         String image = Recipe.getString("image");
-                        Recipe r = new Recipe(id,name,ingredients,steps,servings,image);
+
+
+
+
+
+
+                            Recipe r = new Recipe(id,name,ingredients,steps,servings,image);
                         recipes.add(r);
                     }
                 }
@@ -127,5 +147,33 @@ public class Utils {
         volley.getInstance(context).addToRequestQueue(stringRequest);
 
     }
+
+
+
+
+    private String saveImage(Bitmap image, String Name) {
+        String savedImagePath = null;
+
+        String imageFileName = Name + ".jpg";
+        File storageDir = new File( Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
+                + "/BakingApp");
+        boolean success = true;
+        if (!storageDir.exists()) {
+            success = storageDir.mkdirs();
+        }
+        if (success) {
+            File imageFile = new File(storageDir, imageFileName);
+            savedImagePath = imageFile.getAbsolutePath();
+            try {
+                OutputStream fOut = new FileOutputStream(imageFile);
+                image.compress(Bitmap.CompressFormat.JPEG, 100, fOut);
+                fOut.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return savedImagePath;
+    }
+
 
 }

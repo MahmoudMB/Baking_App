@@ -2,8 +2,10 @@ package com.example.android.bakingapp;
 
 import android.content.Intent;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import com.example.android.bakingapp.Adapter.StepAdapter;
 import com.example.android.bakingapp.Model.Recipe;
@@ -19,7 +21,10 @@ public static Recipe recipe;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_detail);
-
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
 
         if(findViewById(R.id.linear_layout)!=null)
         {
@@ -50,6 +55,7 @@ else {
 
     }
 
+
     @Override
     public void onClicked(Recipe r, int type) {
 
@@ -77,8 +83,6 @@ if(type==1)
         }
 
 
-
-
         else
             {
 
@@ -102,7 +106,7 @@ if(type==1)
             if (type==2)
             {
 
-                stepsFragment f = new stepsFragment();
+                StepssFragment f = new StepssFragment();
                 FragmentManager fragmentManager = getSupportFragmentManager();
 
                 f.setStep(r);
@@ -133,4 +137,16 @@ if(type==1)
 
 
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        super.onOptionsItemSelected(item);
+        //Back Button to navigate back to the details screen
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
+            finish();
+        }
+        return true;
+    }
+
+
 }

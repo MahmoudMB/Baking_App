@@ -5,6 +5,8 @@ package com.example.android.bakingapp.Adapter;
  */
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.os.Environment;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 //import com.bumptech.glide.Glide;
 
@@ -20,6 +23,9 @@ import com.example.android.bakingapp.Model.Recipe;
 import com.example.android.bakingapp.R;
 import com.example.android.bakingapp.RecipeDetail;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.util.Collections;
 import java.util.List;
 
@@ -76,10 +82,38 @@ holder.recipeName.setText(currentRecipe.getName());
 
 Log.v("Videourl",currentRecipe.getSteps().get(currentRecipe.getSteps().size()-1).getVideoURL());
 
-        Glide.with(mContext)
-                .load(currentRecipe.getSteps().get(currentRecipe.getSteps().size()-1).getVideoURL())
-                .thumbnail(Glide.with(mContext).load(currentRecipe.getSteps().get(currentRecipe.getSteps().size()-1).getVideoURL()))
-                .into(holder.Recipe_Image);
+
+
+
+if (currentRecipe.getImage()!=null)
+{
+    Glide.with(mContext)
+            .load(currentRecipe.getImage())
+            .thumbnail(Glide.with(mContext).load(currentRecipe.getSteps().get(currentRecipe.getSteps().size() - 1).getVideoURL()))
+            .into(holder.Recipe_Image);
+}
+
+    else {
+    Glide.with(mContext)
+            .load(currentRecipe.getSteps().get(currentRecipe.getSteps().size() - 1).getVideoURL())
+            .thumbnail(Glide.with(mContext).load(currentRecipe.getSteps().get(currentRecipe.getSteps().size() - 1).getVideoURL()))
+            .into(holder.Recipe_Image);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     }
@@ -111,6 +145,8 @@ ImageView Recipe_Image;
 
 
     }
+
+
 
 
 }
