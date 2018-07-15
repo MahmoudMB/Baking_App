@@ -89,7 +89,6 @@ if (currentRecipe.getImage()!=null)
 {
     Glide.with(mContext)
             .load(currentRecipe.getImage())
-            .thumbnail(Glide.with(mContext).load(currentRecipe.getImage()))
             .into(holder.Recipe_Image);
 }
 
